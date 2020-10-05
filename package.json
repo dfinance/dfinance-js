@@ -1,0 +1,23 @@
+{
+  "name": "dfinance",
+  "version": "0.0.2",
+  "description": "set of tools for dApp development on dfinance",
+  "main": "lib/index.js",
+  "scripts": {},
+  "author": "Damir Shamanaev <damirka.ru@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "dfinance",
+    "dfi",
+    "move",
+    "libra",
+    "smartcontract",
+    "xfi"
+  ],
+  "dependencies": {
+    "cosmos-lib": "^1.1.0",
+    "lcs-js": "0.0.3",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.9"
+  }
+}
