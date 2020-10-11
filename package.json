@@ -1,6 +1,6 @@
 {
   "name": "dfinance",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "set of tools for dApp development on dfinance",
   "main": "lib/index.js",
   "scripts": {},
@@ -8,9 +8,10 @@
   "license": "MIT",
   "keywords": [
     "dfinance",
-    "dfi",
+    "defi",
     "move",
     "libra",
+    "compiler",
     "smartcontract",
     "xfi"
   ],

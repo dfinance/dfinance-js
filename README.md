@@ -23,6 +23,10 @@ const dfi = new DFI('https://rest.testnet.dfinance.co/');
         sender: 'wallet12tg20s9g4les55vfvnumlkg0a5zk825py9j0ha',
         action: 'execute_script',
         module: 'vm',
+        // Search fromBlock, toBlock
+        // Also you can use: {block: value}
+        // to search in specific block
+        block: [0, 200000],
 
         // vm specific params
         vm: {
