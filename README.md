@@ -81,4 +81,56 @@ const dfi = new DFI('https://rest.testnet.dfinance.co/');
 })();
 ```
 
+### Multi script publish + arguments
 
+```JavaScript
+const mnemonic = '...'; // PASTE HERE!
+const DFI = require('dfinance');
+const dfi = new DFI('https://rest.testnet.dfinance.co/');
+
+(async () => {
+
+    const wallet = new dfi.Wallet(mnemonic);
+    const addr   = wallet.address;
+    const script = await dfi.compile(addr, `
+        script {
+            use 0x1::Account;
+            use 0x1::XFI::T as XFI;
+
+            fun main(
+                account: &signer,
+                payee: address,
+                amount: u128
+            ) {
+                Account::pay_from_sender<XFI>(
+                    account,
+                    payee,
+                    amount
+                );
+            }
+        }
+    `);
+
+    const gas = '500000'; // 200k-300k is enough
+    const account = await dfi.api.getAccount(addr);
+    const tx = dfi
+        .tx({account, wallet, gas})
+        .multi()
+        .executeScript(script.code, DFI.scriptArg([
+            // &signer should never be passed!
+            ['address', 'wallet12tg20s9g4les55vfvnumlkg0a5zk825py9j0ha'],
+            ['u128', '100000000']
+        ]))
+        .executeScript(script.code, DFI.scriptArg([
+            ['address', '0x1'],
+            ['u128', '1000']
+        ]))
+        // .publishModule or .executeScript is also available here!
+        .combine();
+
+    const res = await dfi.api.broadcastTx(execScriptTx, 'block');
+
+    console.log(res);
+
+})();
+```

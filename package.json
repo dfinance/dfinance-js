@@ -1,6 +1,6 @@
 {
   "name": "dfinance",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "set of tools for dApp development on dfinance",
   "main": "lib/index.js",
   "scripts": {},
@@ -16,6 +16,7 @@
     "xfi"
   ],
   "dependencies": {
+    "bignumber.js": "^9.0.1",
     "cosmos-lib": "^1.1.0",
     "lcs-js": "0.0.3",
     "request": "^2.88.2",
